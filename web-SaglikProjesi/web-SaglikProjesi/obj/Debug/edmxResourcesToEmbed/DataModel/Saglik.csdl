@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaglikUrunleriModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AltKategoriler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="altkategoriad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kategorino" Type="Int32" Nullable="false" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="silindi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_AltKategoriler_Kategoriler" FromRole="AltKategoriler" ToRole="Kategoriler" />
+  </EntityType>
+  <EntityType Name="Kategoriler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="silindi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AltKategoriler" Relationship="Self.FK_AltKategoriler_Kategoriler" FromRole="Kategoriler" ToRole="AltKategoriler" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_Urunler_Kategoriler" FromRole="Kategoriler" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kullaniciad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sifre" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin" Type="Boolean" Nullable="false" />
+    <Property Name="ad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="soyad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tckno" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="adres" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ilce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="il" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="silindi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Satislar" Relationship="Self.FK_Satislar_Kullanicilar" FromRole="Kullanicilar" ToRole="Satislar" />
+  </EntityType>
+  <EntityType Name="SatisDetaylari">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="satisno" Type="Int32" Nullable="false" />
+    <Property Name="urunid" Type="Int32" Nullable="false" />
+    <Property Name="adet" Type="Int32" Nullable="false" />
+    <Property Name="birimfiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="tutar" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="silindi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Satislar" Relationship="Self.FK_SatisDetaylari_Satislar" FromRole="SatisDetaylari" ToRole="Satislar" />
+    <NavigationProperty Name="Urunler" Relationship="Self.FK_SatisDetaylari_Urunler" FromRole="SatisDetaylari" ToRole="Urunler" />
+  </EntityType>
+  <EntityType Name="Satislar">
+    <Key>
+      <PropertyRef Name="satisno" />
+    </Key>
+    <Property Name="satisno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tarih" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="kullanicino" Type="Int32" Nullable="false" />
+    <Property Name="tutar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="miktar" Type="Int32" Nullable="false" />
+    <Property Name="teslimtarihi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="durumu" Type="Byte" Nullable="false" />
+    <Property Name="silindi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Satislar_Kullanicilar" FromRole="Satislar" ToRole="Kullanicilar" />
+    <NavigationProperty Name="SatisDetaylari" Relationship="Self.FK_SatisDetaylari_Satislar" FromRole="Satislar" ToRole="SatisDetaylari" />
+  </EntityType>
+  <EntityType Name="Urunler">
+    <Key>
+      <PropertyRef Name="urunid" />
+    </Key>
+    <Property Name="urunid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urunkodu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="urunad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="urunkategorino" Type="Int32" Nullable="false" />
+    <Property Name="urunaltkategorino" Type="Int32" Nullable="false" />
+    <Property Name="miktar" Type="Int32" Nullable="false" />
+    <Property Name="urunfiyat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="urunresimyolu1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="urunresimyolu2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="urunbilgisi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="silindi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Kategoriler" Relationship="Self.FK_Urunler_Kategoriler" FromRole="Urunler" ToRole="Kategoriler" />
+    <NavigationProperty Name="SatisDetaylari" Relationship="Self.FK_SatisDetaylari_Urunler" FromRole="Urunler" ToRole="SatisDetaylari" />
+  </EntityType>
+  <Association Name="FK_AltKategoriler_Kategoriler">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="AltKategoriler" Type="Self.AltKategoriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AltKategoriler">
+        <PropertyRef Name="kategorino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urunler_Kategoriler">
+    <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoriler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Urunler">
+        <PropertyRef Name="urunkategorino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satislar_Kullanicilar">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Satislar" Type="Self.Satislar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Satislar">
+        <PropertyRef Name="kullanicino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SatisDetaylari_Satislar">
+    <End Role="Satislar" Type="Self.Satislar" Multiplicity="1" />
+    <End Role="SatisDetaylari" Type="Self.SatisDetaylari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Satislar">
+        <PropertyRef Name="satisno" />
+      </Principal>
+      <Dependent Role="SatisDetaylari">
+        <PropertyRef Name="satisno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SatisDetaylari_Urunler">
+    <End Role="Urunler" Type="Self.Urunler" Multiplicity="1" />
+    <End Role="SatisDetaylari" Type="Self.SatisDetaylari" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urunler">
+        <PropertyRef Name="urunid" />
+      </Principal>
+      <Dependent Role="SatisDetaylari">
+        <PropertyRef Name="urunid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SaglikUrunleriEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AltKategoriler" EntityType="Self.AltKategoriler" />
+    <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+    <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+    <EntitySet Name="SatisDetaylari" EntityType="Self.SatisDetaylari" />
+    <EntitySet Name="Satislar" EntityType="Self.Satislar" />
+    <EntitySet Name="Urunler" EntityType="Self.Urunler" />
+    <AssociationSet Name="FK_AltKategoriler_Kategoriler" Association="Self.FK_AltKategoriler_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="AltKategoriler" EntitySet="AltKategoriler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urunler_Kategoriler" Association="Self.FK_Urunler_Kategoriler">
+      <End Role="Kategoriler" EntitySet="Kategoriler" />
+      <End Role="Urunler" EntitySet="Urunler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satislar_Kullanicilar" Association="Self.FK_Satislar_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Satislar" EntitySet="Satislar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SatisDetaylari_Satislar" Association="Self.FK_SatisDetaylari_Satislar">
+      <End Role="Satislar" EntitySet="Satislar" />
+      <End Role="SatisDetaylari" EntitySet="SatisDetaylari" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SatisDetaylari_Urunler" Association="Self.FK_SatisDetaylari_Urunler">
+      <End Role="Urunler" EntitySet="Urunler" />
+      <End Role="SatisDetaylari" EntitySet="SatisDetaylari" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

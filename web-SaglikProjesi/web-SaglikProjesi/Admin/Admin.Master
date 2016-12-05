@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="web_SaglikProjesi.Admin.Admin" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../Content/style/style.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="wrap">
+        <div id="header">
+            <h1><a href="Default.aspx">SAĞLIK ÜRÜNLERİ</a></h1>
+            <h2>Admin Panel</h2>
+        </div>
+        <div id="top"></div>
+        <div id="contentt">
+            <asp:Panel ID="pnlMenu" runat="server" Visible="false">
+            <div id="headermenu" >                
+                <div class="headerm">
+                    <ul>
+                        <li><a href="KategoriEkle.aspx">Kategori İşlemleri</a></li>
+                        <li><a href="AltKategoriEkle.aspx">AltKategori İşlemleri</a></li>
+                        <li><a href="UrunEkle.aspx">Ürün İşlemleri</a></li>
+                        <li><a href="#">Kullanıcı İşlemleri</a></li>
+                    </ul>                    
+                </div>                
+            </div>
+            </asp:Panel>
+            <div class="left">
+                <%--<h2>Admin</h2>--%>
+            </div>
+            <div class="middle">
+                <%--<h2 id="baslik">Ürünler</h2>--%>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="right">
+                <%--<h2>Sepet Özeti</h2>--%>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div id="bottom"></div>
+        <div id="footer">&copy Copyright .Net ERP6 Yazılım 2016</div>
+    </div>
+    </form>
+</body>
+</html>

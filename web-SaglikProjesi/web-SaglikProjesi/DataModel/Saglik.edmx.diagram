@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5594f67dd4b14cfc9654984961568ada" Name="Diagram1">
+        <EntityTypeShape EntityType="SaglikUrunleriModel.AltKategoriler" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaglikUrunleriModel.Kategoriler" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaglikUrunleriModel.Kullanicilar" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaglikUrunleriModel.SatisDetaylari" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaglikUrunleriModel.Satislar" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaglikUrunleriModel.Urunler" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="SaglikUrunleriModel.FK_AltKategoriler_Kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="SaglikUrunleriModel.FK_Urunler_Kategoriler" ManuallyRouted="false" />
+        <AssociationConnector Association="SaglikUrunleriModel.FK_Satislar_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="SaglikUrunleriModel.FK_SatisDetaylari_Satislar" ManuallyRouted="false" />
+        <AssociationConnector Association="SaglikUrunleriModel.FK_SatisDetaylari_Urunler" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
